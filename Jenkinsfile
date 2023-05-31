@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        sh 'docker build -t flask-example:$BUILD_ID .'
+        sh 'docker build -t david755chen/flask-example:$BUILD_ID .'
       }
     }
 
@@ -28,6 +28,9 @@ pipeline {
     stage('push to Docker-Hub') {
       steps {
         echo 'push to Docker-Hub'
+        sh '''docker push david755chen/flask-example:$BUILD_ID
+'''
+        sh 'docker login -u $user -p $pass'
       }
     }
 
