@@ -18,6 +18,9 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Test'
+        sh 'docker run -d -p 6969:6969 flask-example:$BUILD_ID '
+        sh 'sleep 5'
+        sh 'curl localhost:6969'
       }
     }
 
