@@ -28,9 +28,9 @@ pipeline {
     stage('push to Docker-Hub') {
       steps {
         echo 'push to Docker-Hub'
+        sh 'docker login -u $user -p $pass'
         sh '''docker push david755chen/flask-example:$BUILD_ID
 '''
-        sh 'docker login -u $user -p $pass'
       }
     }
 
