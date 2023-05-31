@@ -21,7 +21,7 @@ pipeline {
         sh 'docker run -d -p 6969:6969 --name flask-demo flask-example:$BUILD_ID'
         sh 'sleep 5'
         sh 'curl localhost:6969'
-        sh 'docker stop flask-demo & docker rm flask-demo'
+        sh 'docker stop flask-demo && docker rm flask-demo'
       }
     }
 
