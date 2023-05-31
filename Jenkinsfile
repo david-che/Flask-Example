@@ -4,6 +4,7 @@ pipeline {
     stage('Checkout code') {
       steps {
         echo 'Checkout code'
+        git(url: 'https://github.com/david-che/Flask-Example.git', branch: 'main', changelog: true, poll: true)
       }
     }
 
