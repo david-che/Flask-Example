@@ -28,8 +28,10 @@ pipeline {
     stage('push to Docker-Hub') {
       steps {
         echo 'push to Docker-Hub'
-        sh 'docker login -u $user -p $pass'
-        sh '''docker push david755chen/flask-example:$BUILD_ID
+        withCredentials(bindings:[usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+          sh 'docker login -u $user -p $pass'
+          sh '''docker push david755chen/flask-example:$BUILD_ID
+        }
 '''
       }
     }
